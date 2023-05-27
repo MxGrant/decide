@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Wheel Picker</title>
+  <style>
+    #nameInput {
+      margin-bottom: 10px;
+    }
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    #spinButton {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body background="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcliparting.com%2Fwp-content%2Fuploads%2F2017%2F04%2FQuestion-marks-clipart-2.jpg&f=1&nofb=1&ipt=bf92fb0ece8fc88d0af24e4582dbb23911d202e26ad84dc30186ca60aed5da2e&ipo=images">
+  <h1>Random Wheel Picker</h1>
+  <div>
+    <label for="nameInput">Enter names (comma-separated):</label>
+    <input type="text" id="nameInput">
+    <button id="spinButton" onclick="spinWheel()">Spin Wheel</button>
+  </div>
+  <div id="result"></div>
+
+  <script>
+    function spinWheel() {
+      var nameInput = document.getElementById('nameInput').value;
+      var names = nameInput.split(',').map(function(name) {
+        return name.trim();
+      });
+
+      if (names.length > 0) {
+        var randomIndex = Math.floor(Math.random() * names.length);
+        var winner = names[randomIndex];
+        document.getElementById('result').textContent = "Winner: " + winner;
+      } else {
+        document.getElementById('result').textContent = "No names entered.";
+      }
+    }
+  </script>
+</body>
+</html>
